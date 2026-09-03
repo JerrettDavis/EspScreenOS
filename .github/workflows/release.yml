@@ -20,7 +20,11 @@ jobs:
           - hosyond-esp32s3-35-st77922
     steps:
       - uses: actions/checkout@v7
-      - run: python tools/espscreen.py build --board "${{ matrix.board }}"
+      - name: Build
+        shell: bash
+        run: |
+          source /opt/esp/idf/export.sh
+          python tools/espscreen.py build --board "${{ matrix.board }}"
       - run: python tools/espscreen.py package --board "${{ matrix.board }}"
       - uses: actions/upload-artifact@v7
         with:
