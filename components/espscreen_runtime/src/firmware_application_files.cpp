@@ -9,6 +9,7 @@
 #include <string>
 #else
 #include <dirent.h>
+#include <sys/stat.h>
 #endif
 
 namespace espscreen::runtime {
@@ -90,6 +91,7 @@ core::Status FirmwareApplicationFiles::visit_files(
     if (!entries) return core::Status::success();
     while (const auto* entry = readdir(entries)) {
         const std::string_view name{entry->d_name};
+        if (name == "." || name == "..") continue;
         std::array<char, 256> path{};
         const int length = std::snprintf(path.data(), path.size(), "%s/%.*s",
                                          directory_path.data(),
@@ -98,6 +100,8 @@ core::Status FirmwareApplicationFiles::visit_files(
             closedir(entries);
             return {core::ErrorCode::capacity_exceeded, "application file path too long"};
         }
+        struct stat metadata {};
+        if (stat(path.data(), &metadata) != 0 || !S_ISREG(metadata.st_mode)) continue;
         if (!visitor.visit({.name = name, .path = path.data()})) break;
     }
     closedir(entries);
