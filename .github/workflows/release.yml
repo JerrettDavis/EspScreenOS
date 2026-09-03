@@ -1,0 +1,41 @@
+name: Release firmware
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    container: espressif/idf:v5.4.2
+    strategy:
+      matrix:
+        board:
+          - hosyond-esp32-35-st7796u
+          - hosyond-esp32-40-st7796s
+          - hosyond-esp32-32-st7789p3
+          - diymalls-esp32-2432s032c-i
+          - hosyond-esp32s3-28-ili9341
+          - hosyond-esp32s3-35-st77922
+    steps:
+      - uses: actions/checkout@v4
+      - run: python tools/espscreen.py build --board "${{ matrix.board }}"
+      - run: python tools/espscreen.py package --board "${{ matrix.board }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ matrix.board }}
+          path: dist/*.zip
+          if-no-files-found: error
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/*.zip
+          generate_release_notes: true

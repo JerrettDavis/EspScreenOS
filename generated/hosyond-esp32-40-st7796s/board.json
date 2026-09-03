@@ -1,0 +1,102 @@
+{
+  "audio": {
+    "codec_i2c_address": 24,
+    "control_host": "none",
+    "data_host": "none",
+    "driver": "pwm",
+    "pins": {
+      "speaker": 26
+    },
+    "sample_rate": 16000
+  },
+  "display": {
+    "backlight_active_high": true,
+    "bus": "spi",
+    "clock_hz": 40000000,
+    "color_order": "bgr",
+    "draw_buffer_lines": 30,
+    "driver": "st7796s",
+    "height": 320,
+    "host": "spi2",
+    "invert": false,
+    "pins": {
+      "backlight": 27,
+      "cs": 15,
+      "dc": 2,
+      "miso": 12,
+      "mosi": 13,
+      "reset": -1,
+      "sclk": 14
+    },
+    "rotation": 0,
+    "transfer_buffer_lines": 20,
+    "width": 480
+  },
+  "display_name": "Hosyond ESP32 4.0-inch",
+  "family": "ESP32-3248",
+  "haptics": {
+    "minimum_running_duty": 20,
+    "pin": -1,
+    "pwm_frequency_hz": 20000,
+    "startup_kick_duty": 100,
+    "startup_kick_enabled": true,
+    "startup_kick_ms": 40
+  },
+  "hardware_match": "ESP32-32E, 4.0-inch ST7796S, XPT2046",
+  "headers": [],
+  "id": "hosyond-esp32-40-st7796s",
+  "maturity": "derived-verified-family",
+  "mcu": {
+    "cpu_mhz": 240,
+    "flash_mb": 4,
+    "psram_mb": 0,
+    "target": "esp32"
+  },
+  "power": {
+    "ambient_light_adc": -1,
+    "battery_adc": -1,
+    "battery_divider": 2.0,
+    "battery_empty_mv": 3200,
+    "battery_full_mv": 4200,
+    "usb_detect": -1
+  },
+  "schema_version": 1,
+  "source_urls": [
+    "https://github.com/"
+  ],
+  "storage": {
+    "clock_hz": 20000000,
+    "driver": "sdspi",
+    "host": "spi3",
+    "max_files": 6,
+    "mount_point": "/sd",
+    "pins": {
+      "clk": 18,
+      "cmd": 23,
+      "cs": 5,
+      "d0": 19
+    }
+  },
+  "touch": {
+    "bus": "soft_spi",
+    "calibration": [
+      200,
+      3900,
+      200,
+      3900
+    ],
+    "clock_hz": 400000,
+    "driver": "xpt2046",
+    "host": "i2c0",
+    "pins": {
+      "cs": 33,
+      "irq": 36,
+      "miso": 39,
+      "mosi": 32,
+      "reset": -1,
+      "sclk": 25
+    },
+    "rotation": 0
+  },
+  "vendor": "Hosyond"
+}

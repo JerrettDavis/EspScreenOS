@@ -1,0 +1,26 @@
+name: Bug report
+description: Reproducible platform, application, or tooling problem
+body:
+  - type: input
+    attributes:
+      label: Board profile and PCB revision
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Firmware commit
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Reproduction and serial log
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Hardware modifications or connected peripherals

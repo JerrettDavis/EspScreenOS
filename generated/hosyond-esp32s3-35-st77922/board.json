@@ -1,0 +1,134 @@
+{
+  "audio": {
+    "codec_i2c_address": 24,
+    "control_host": "i2c0",
+    "data_host": "i2s0",
+    "driver": "es8311",
+    "pins": {
+      "bclk": 18,
+      "din": 16,
+      "dout": 15,
+      "mclk": 17,
+      "scl": 39,
+      "sda": 38,
+      "speaker": 1,
+      "ws": 21
+    },
+    "sample_rate": 16000
+  },
+  "display": {
+    "backlight_active_high": true,
+    "bus": "qspi",
+    "clock_hz": 40000000,
+    "color_order": "bgr",
+    "draw_buffer_lines": 40,
+    "driver": "st77922",
+    "height": 480,
+    "host": "spi2",
+    "invert": false,
+    "pins": {
+      "backlight": 41,
+      "cs": 10,
+      "data1": 13,
+      "data2": 14,
+      "data3": 9,
+      "mosi": 11,
+      "sclk": 12
+    },
+    "rotation": 0,
+    "transfer_buffer_lines": 40,
+    "width": 320
+  },
+  "display_name": "Hosyond/LCDWiki ES3C35P 3.5-inch",
+  "family": "ES3C35P",
+  "haptics": {
+    "minimum_running_duty": 20,
+    "pin": 45,
+    "pwm_frequency_hz": 20000,
+    "startup_kick_duty": 100,
+    "startup_kick_enabled": true,
+    "startup_kick_ms": 40
+  },
+  "hardware_match": "ESP32-S3 N16R8, 3.5-inch 320x480 IPS, ST77922 QSPI, capacitive touch",
+  "headers": [
+    {
+      "kind": "gpio",
+      "labels": [
+        "IO46 (not motor)"
+      ],
+      "name": "EXP",
+      "pins": [
+        46
+      ]
+    },
+    {
+      "host": "i2c0",
+      "kind": "i2c",
+      "labels": [
+        "SDA",
+        "SCL"
+      ],
+      "name": "I2C",
+      "pins": [
+        38,
+        39
+      ],
+      "shared": true
+    }
+  ],
+  "id": "hosyond-esp32s3-35-st77922",
+  "maturity": "vendor-derived",
+  "mcu": {
+    "cpu_mhz": 240,
+    "flash_mb": 16,
+    "psram_mb": 8,
+    "target": "esp32s3"
+  },
+  "power": {
+    "ambient_light_adc": -1,
+    "battery_adc": 8,
+    "battery_divider": 2.0,
+    "battery_empty_mv": 3200,
+    "battery_full_mv": 4200,
+    "usb_detect": -1
+  },
+  "schema_version": 1,
+  "source_urls": [
+    "https://www.lcdwiki.com/3.5inch_ESP32-S3_Display"
+  ],
+  "storage": {
+    "clock_hz": 20000000,
+    "driver": "sdmmc",
+    "host": "sdmmc0",
+    "max_files": 6,
+    "mount_point": "/sd",
+    "pins": {
+      "clk": 5,
+      "cmd": 4,
+      "d0": 6,
+      "d1": 7,
+      "d2": 2,
+      "d3": 3
+    }
+  },
+  "touch": {
+    "bus": "i2c",
+    "calibration": [
+      200,
+      3900,
+      200,
+      3900
+    ],
+    "clock_hz": 400000,
+    "driver": "cst328",
+    "host": "i2c0",
+    "pins": {
+      "irq": 47,
+      "mosi": 38,
+      "reset": 48,
+      "sclk": 39
+    },
+    "rotation": 0
+  },
+  "vendor": "Hosyond/LCDWiki"
+}

@@ -1,0 +1,40 @@
+name: Firmware matrix
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: firmware-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    container: espressif/idf:v5.4.2
+    strategy:
+      fail-fast: false
+      matrix:
+        board:
+          - hosyond-esp32-35-st7796u
+          - hosyond-esp32-40-st7796s
+          - hosyond-esp32-32-st7789p3
+          - diymalls-esp32-2432s032c-i
+          - hosyond-esp32s3-28-ili9341
+          - hosyond-esp32s3-35-st77922
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: python tools/espscreen.py build --board "${{ matrix.board }}"
+      - name: Package
+        run: python tools/espscreen.py package --board "${{ matrix.board }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: firmware-${{ matrix.board }}
+          path: |
+            dist/*.zip
+            generated/${{ matrix.board }}/board.json
+          if-no-files-found: error
+          retention-days: 14

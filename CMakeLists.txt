@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.16)
+if(NOT DEFINED ESPSCREEN_BOARD)
+  set(ESPSCREEN_BOARD "hosyond-esp32s3-35-st77922" CACHE STRING "EspScreenOS board profile")
+endif()
+set(ESPSCREEN_GENERATED_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/generated/${ESPSCREEN_BOARD}/include")
+file(STRINGS "${CMAKE_SOURCE_DIR}/VERSION" PROJECT_VER LIMIT_COUNT 1)
+include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+project(espscreenos)

@@ -1,0 +1,24 @@
+name: Host validation
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: host-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate manifests
+        run: python tools/espscreen.py validate --all
+      - name: Verify generated output
+        run: python tools/espscreen.py generate --all --check
+      - name: Run host and Python tests
+        run: python tools/espscreen.py test

@@ -1,0 +1,17 @@
+# ESP-IDF and local build output
+/build/
+/dist/
+/managed_components/
+/sdkconfig
+/sdkconfig.old
+
+# Python caches and test state
+__pycache__/
+*.py[cod]
+/.pytest_cache/
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

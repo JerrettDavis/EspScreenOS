@@ -1,0 +1,11 @@
+{
+  "name": "EspScreenOS ESP-IDF",
+  "build": { "dockerfile": "../Dockerfile", "context": ".." },
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": ["espressif.esp-idf-extension", "ms-vscode.cpptools", "tamasfe.even-better-toml"]
+    }
+  },
+  "runArgs": ["--device=/dev/ttyUSB0"]
+}

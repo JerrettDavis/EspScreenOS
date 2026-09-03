@@ -1,0 +1,21 @@
+name: Board support request
+description: Propose and document a new board profile
+body:
+  - type: input
+    attributes:
+      label: Exact PCB marking and revision
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Schematic, vendor example, and source links
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: MCU, flash, PSRAM, display, touch, SD, audio, power, and header details
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Working firmware or qualification evidence

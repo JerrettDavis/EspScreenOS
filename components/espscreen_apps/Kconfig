@@ -1,0 +1,29 @@
+menu "EspScreenOS applications"
+config ESPSCREEN_SD_APPS
+ bool "Lua applications sideloaded from /sd/apps"
+ default y
+config ESPSCREEN_APP_DASHBOARD
+ bool "Dashboard"
+ default y
+config ESPSCREEN_APP_HARDWARE_TEST
+ bool "Hardware test"
+ default y
+config ESPSCREEN_APP_BOARD_INFO
+ bool "Board information"
+ default y
+config ESPSCREEN_APP_CALCULATOR
+ bool "Calculator"
+ default y
+config ESPSCREEN_APP_GPIO_TOOLBOX
+ bool "GPIO toolbox"
+ default y
+config ESPSCREEN_APP_RECORDER
+ bool "Sound recorder/player"
+ default y
+config ESPSCREEN_APP_PAINT
+ bool "Paint"
+ default y
+config ESPSCREEN_APP_NOTES
+ bool "Notes editor"
+ default y
+endmenu

@@ -1,0 +1,12 @@
+{
+  "id":"hosyond-esp32s3-35-st77922", "display_name":"Hosyond/LCDWiki ES3C35P 3.5-inch", "vendor":"Hosyond/LCDWiki", "family":"ES3C35P", "maturity":"vendor-derived",
+  "hardware_match":"ESP32-S3 N16R8, 3.5-inch 320x480 IPS, ST77922 QSPI, capacitive touch", "source_urls":["https://www.lcdwiki.com/3.5inch_ESP32-S3_Display"],
+  "mcu":{"target":"esp32s3","flash_mb":16,"psram_mb":8},
+  "display":{"driver":"st77922","bus":"qspi","host":"spi2","width":320,"height":480,"rotation":0,"clock_hz":40000000,"draw_buffer_lines":40,"transfer_buffer_lines":40,"pins":{"sclk":12,"mosi":11,"cs":10,"backlight":41,"data1":13,"data2":14,"data3":9}},
+  "touch":{"driver":"cst328","bus":"i2c","host":"i2c0","clock_hz":400000,"rotation":0,"pins":{"sclk":39,"mosi":38,"irq":47,"reset":48}},
+  "storage":{"driver":"sdmmc","host":"sdmmc0","clock_hz":20000000,"pins":{"clk":5,"cmd":4,"d0":6,"d1":7,"d2":2,"d3":3}},
+  "audio":{"driver":"es8311","control_host":"i2c0","data_host":"i2s0","sample_rate":16000,"codec_i2c_address":24,"pins":{"mclk":17,"bclk":18,"ws":21,"dout":15,"din":16,"sda":38,"scl":39,"speaker":1}},
+  "power":{"battery_adc":8,"battery_divider":2.0},
+  "haptics":{"pin":45,"pwm_frequency_hz":20000,"minimum_running_duty":20,"startup_kick_duty":100,"startup_kick_ms":40,"startup_kick_enabled":true},
+  "headers":[{"name":"EXP","kind":"gpio","pins":[46],"labels":["IO46 (not motor)"]},{"name":"I2C","kind":"i2c","host":"i2c0","pins":[38,39],"labels":["SDA","SCL"],"shared":true}]
+}
