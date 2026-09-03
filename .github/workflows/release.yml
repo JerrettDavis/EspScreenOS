@@ -19,10 +19,10 @@ jobs:
           - hosyond-esp32s3-28-ili9341
           - hosyond-esp32s3-35-st77922
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: python tools/espscreen.py build --board "${{ matrix.board }}"
       - run: python tools/espscreen.py package --board "${{ matrix.board }}"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: release-${{ matrix.board }}
           path: dist/*.zip
@@ -31,11 +31,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           path: artifacts
           merge-multiple: true
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           files: artifacts/*.zip
           generate_release_notes: true
